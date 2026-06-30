@@ -15,12 +15,12 @@
     <div class="login">
         <h1>Cadastro</h1>
 
-        <input type="text" class="caixa-texto" placeholder="Digite seu nome completo"/>
-        <input type="date" class="caixa-texto" placeholder="Data de nascimento"/>
-        <input type="text" class="caixa-texto" placeholder="Digite seu email"/>
-        <input type="text" class="caixa-texto" placeholder="Crie uma senha"/>
+        <input type="text" class="caixa-texto" id="nome" placeholder="Digite seu nome completo"/>
+        <input type="date" class="caixa-texto" id="nascimento" placeholder="Data de nascimento"/>
+        <input type="text" class="caixa-texto" id="email" placeholder="Digite seu email"/>
+        <input type="text" class="caixa-texto" id="senha" placeholder="Crie uma senha"/>
 
-        <button>Criar conta</button>
+        <button id="btnCadastrar">Criar conta</button>
 
         <h4 class="cadastro-texto">
             Já possui uma conta? 
@@ -28,4 +28,32 @@
         </h4>
     </div>
 </body>
+
+<script>
+    document.getElementById("btnCadastrar").addEventListener("click", function () {
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senha").value;
+        const nascimento = document.getElementById("nascimento").value;
+
+        if ( !nome || !email || !senha || !nascimento){
+            alert("Preecha todos os campos!");
+            return;
+        }
+
+        const usuario = {
+            nome: nome,
+            email: email,
+            senha: senha,
+            nascimento: nascimento
+        };
+
+        localStorage.setItem("usuario", JSON.stringify(usuario));
+
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "login.html";
+
+    });
+</script>
 </html>

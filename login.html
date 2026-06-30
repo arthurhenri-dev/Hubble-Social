@@ -20,10 +20,10 @@
     <div class="login">
         <h1>Login</h1>
 
-        <input type="text" class="caixa-texto" placeholder="Digite seu email"/>
-        <input type="text" class="caixa-texto" placeholder="Digite sua senha"/>
+        <input type="text" class="caixa-texto" id="loginEmail" placeholder="Digite seu email"/>
+        <input type="text" class="caixa-texto" id="loginSenha" placeholder="Digite sua senha"/>
 
-        <button>Entrar</button>
+        <button id="btnLogin">Entrar</button>
 
         <h4 class="cadastro-texto">
             Não possui uma conta? 
@@ -32,4 +32,27 @@
     </div>
 
 </body>
+
+<script>
+    document.getElementById("btnLogin").addEventListener("click", function () {
+
+        const email = document.getElementById("loginEmail").value;
+        const senha = document.getElementById("loginSenha").value;
+
+        const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
+
+        if (!usuarioSalvo) {
+            alert("Nenhum usuario encontrado");
+            return;
+        }
+
+        if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
+            alert("Login realizado com sucesso! Bem vindo!")
+        } else {
+            alert("Email ou senha incorretos! Tente novamente")
+        }
+    });
+
+
+</script>
 </html>
