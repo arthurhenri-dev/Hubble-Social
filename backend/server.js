@@ -1,15 +1,18 @@
+require("dotenv").config();
+
 const express = require("express");
 const mysql = require("mysql2");
+const bcrypt = require("bcrypt");
 
 const app = express();
 
 app.use(express.json());
 
 const conexao = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "05082007nA",
-    database: "hubble"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 conexao.connect((erro) => {
