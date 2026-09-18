@@ -27,33 +27,8 @@
             <a href="index.html" class="cadastro-link">Faça login</a>
         </h4>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
-<script>
-    document.getElementById("btnCadastrar").addEventListener("click", function () {
-
-        const nome = document.getElementById("nome").value;
-        const email = document.getElementById("email").value;
-        const senha = document.getElementById("senha").value;
-        const nascimento = document.getElementById("nascimento").value;
-
-        if ( !nome || !email || !senha || !nascimento){
-            alert("Preecha todos os campos!");
-            return;
-        }
-
-        const usuario = {
-            nome: nome,
-            email: email,
-            senha: senha,
-            nascimento: nascimento
-        };
-
-        localStorage.setItem("usuario", JSON.stringify(usuario));
-
-        alert("Cadastro realizado com sucesso!");
-        window.location.href = "login.html";
-
-    });
-</script>
 </html>

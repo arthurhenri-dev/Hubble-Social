@@ -31,28 +31,7 @@
         </h4>
     </div>
 
+    <script src="script.js"></script>
 </body>
 
-<script>
-    document.getElementById("btnLogin").addEventListener("click", function () {
-
-        const email = document.getElementById("loginEmail").value;
-        const senha = document.getElementById("loginSenha").value;
-
-        const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
-
-        if (!usuarioSalvo) {
-            alert("Nenhum usuario encontrado");
-            return;
-        }
-
-        if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
-            alert("Login realizado com sucesso! Bem vindo!")
-        } else {
-            alert("Email ou senha incorretos! Tente novamente")
-        }
-    });
-
-
-</script>
 </html>
