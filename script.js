@@ -57,7 +57,7 @@ if (btnCadastrar){
         alert(dados.mensagem);
 
         if (resposta.ok){
-            window.location.href = "index.html";
+            window.location.href = "cad.html";
         }
     });
 }
