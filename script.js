@@ -26,8 +26,9 @@ if (btnLogin){
 // Script da tela de cadastro (cad.html)
 const btnCadastrar = document.getElementById("btnCadastrar");
 
+
 if (btnCadastrar){
-    btnCadastrar.addEventListener("click", async function (){
+    btnCadastrar.addEventListener("click", async() => {
 
         const nome = document.getElementById("nome").value;
         const email = document.getElementById("email").value;
