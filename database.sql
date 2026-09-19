@@ -12,10 +12,13 @@ CREATE TABLE IF NOT EXISTS usuarios(
 
 INSERT INTO usuarios(nome, nascimento, email, senha)
 VALUES(
-    'Arthur Henrique',
+    'Teste Node',
     '2007-08-05',
-    'teste@gmail.com',
-    '123456'
+    'testenode@gmail.com',
+    'hash_teste'
 );
 
 SELECT * FROM usuarios;
+
+DESCRIBE usuarios;
+SHOW TABLES;

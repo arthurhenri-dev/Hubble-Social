@@ -1,10 +1,14 @@
 require("dotenv").config();
 
+
 const express = require("express");
 const mysql = require("mysql2");
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -26,6 +30,8 @@ conexao.connect((erro) => {
 
 app.post("/cadastro", async(req, res) => {
     const { nome, nascimento, email, senha } = req.body;
+
+    console.log("Dados recebidos:", req.body);
 
     try{
         const senhaHash = await bcrypt.hash(senha, 10);
