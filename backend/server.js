@@ -28,6 +28,8 @@ conexao.connect((erro) => {
     console.log("Conetado ao MySQL!");
 });
 
+// rota do cadastro
+
 app.post("/cadastro", async(req, res) => {
     const { nome, nascimento, email, senha } = req.body;
 
@@ -67,6 +69,59 @@ app.post("/cadastro", async(req, res) => {
             mensagem: "Erro no servidor."
         })
     }
+});
+
+// rota do login
+app.post("/login", (req, res) => {
+
+    const { email, senha } = req.body;
+
+    console.log("Login recebido:", email, senha);
+
+    const sql = "SELECT * FROM usuarios WHERE email = ?";
+
+    conexao.query(sql, [email], async (erro, resultados) => {
+
+        if (erro) {
+            console.log("Erro ao fazer login:", erro);
+
+            return res.status(500).json({
+                mensagem: "Erro no servidor."
+            });
+        }
+
+        console.log("Usuários encontrados:", resultados.length);
+
+        if (resultados.length === 0) {
+            return res.status(401).json({
+                mensagem: "Email ou senha incorretos."
+            });
+        }
+
+        const usuario = resultados[0];
+
+        console.log("Usuário encontrado:", usuario.email);
+        console.log("Hash salvo:", usuario.senha);
+
+        const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+
+        console.log("Senha correta:", senhaCorreta);
+
+        if (!senhaCorreta) {
+            return res.status(401).json({
+                mensagem: "Email ou senha incorretos."
+            });
+        }
+
+        res.json({
+            mensagem: "Login realizado com sucesso!",
+            usuario: {
+                id: usuario.id,
+                nome: usuario.nome,
+                email: usuario.email
+            }
+        });
+    });
 });
 
 app.listen(3000, () => {
