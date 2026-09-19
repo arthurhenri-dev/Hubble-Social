@@ -1,6 +1,6 @@
 
 // Script da tela de login (index.html)
-const btnLogin = document.getElementaryById("btnLogin");
+const btnLogin = document.getElementById("btnLogin");
 
 if (btnLogin){
     document.getElementById("btnLogin").addEventListener("click", function () {
@@ -24,32 +24,40 @@ if (btnLogin){
 }
 
 // Script da tela de cadastro (cad.html)
-const btnCadastrar = document.getElementaryById("btnCadastrar");
+const btnCadastrar = document.getElementById("btnCadastrar");
 
 if (btnCadastrar){
-    document.getElementById("btnCadastrar").addEventListener("click", function () {
+    btnCadastrar.addEventListener("click", async function (){
 
         const nome = document.getElementById("nome").value;
         const email = document.getElementById("email").value;
         const senha = document.getElementById("senha").value;
         const nascimento = document.getElementById("nascimento").value;
 
-        if ( !nome || !email || !senha || !nascimento){
-            alert("Preecha todos os campos!");
+        if ( !nome || !email || !senha || !nascimento) {
+            alert("Preencha todos os campos!");
             return;
         }
 
-        const usuario = {
-            nome: nome,
-            email: email,
-            senha: senha,
-            nascimento: nascimento
-        };
+        const resposta = await fetch("http://localhost:3000/cadastro", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: nome, 
+                email: email,
+                senha: senha,
+                nascimento: nascimento
+            })
+        });
 
-        localStorage.setItem("usuario", JSON.stringify(usuario));
+        const dados = await resposta.json();
 
-        alert("Cadastro realizado com sucesso!");
-        window.location.href = "login.html";
+        alert(dados.mensagem);
 
+        if (resposta.ok){
+            window.location.href = "index.html";
+        }
     });
 }

@@ -24,6 +24,45 @@ conexao.connect((erro) => {
     console.log("Conetado ao MySQL!");
 });
 
+app.post("/cadastro", async(req, res) => {
+    const { nome, nascimento, email, senha } = req.body;
+
+    try{
+        const senhaHash = await bcrypt.hash(senha, 10);
+
+        const sql = `
+            INSERT INTO usuarios (nome, nascimento, email, senha)
+            VALUES(?, ?, ?, ?)
+        `;
+    
+        conexao.query(
+            sql,
+            [nome, nascimento, email, senhaHash],
+            (erro) => {
+
+                if (erro) {
+                    console.log("Erro ao cadastrar:", erro);
+
+                    return res.status(500).json({
+                        mensagem: "Erro ao cadastrar usuario."
+                    });
+                }
+
+                res.json({
+                    mensagem: "Usuário cadastrado com sucesso!"
+                });
+            }
+        );
+    } catch (erro) {
+
+        console.log("Erro:", erro);
+
+        res.status(500).json({
+            mensagem: "Erro no servidor."
+        })
+    }
+});
+
 app.listen(3000, () => {
     console.log("Servidor do Hubble rodando na porta 3000!");
 });
