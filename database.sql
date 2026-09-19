@@ -22,3 +22,6 @@ SELECT * FROM usuarios;
 
 DESCRIBE usuarios;
 SHOW TABLES;
+
+DELETE FROM usuarios;
+ALTER TABLE usuarios AUTO_INCREMENT = 1;
