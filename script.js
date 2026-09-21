@@ -13,7 +13,7 @@ if (btnLogin){
             return;
         }
 
-        const resposta = await fetch("http://localhost:3000/login", {
+        const resposta = await fetch("https://hubble-backend-pxj0.onrender.com/login", {
             method: "POST",
 
             headers: {
@@ -53,7 +53,7 @@ if (btnCadastrar){
             return;
         }
 
-        const resposta = await fetch("http://localhost:3000/cadastro", {
+        const resposta = await fetch("https://hubble-backend-pxj0.onrender.com/cadastro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
