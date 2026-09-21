@@ -1,4 +1,4 @@
--- Active: 1789669926946@@127.0.0.1@3306@hubble
+-- Active: 1790033803825@@hubble-db-hubble-sql.k.aivencloud.com@21887
 CREATE DATABASE  IF NOT EXISTS hubble;
 
 USE hubble;
@@ -25,3 +25,8 @@ SHOW TABLES;
 
 DELETE FROM usuarios;
 ALTER TABLE usuarios AUTO_INCREMENT = 1;
+
+SELECT
+    @@hostname AS servidor,
+    @@port AS porta,
+    DATABASE() AS banco;
