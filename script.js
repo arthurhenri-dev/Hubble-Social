@@ -31,7 +31,7 @@ if (btnLogin){
         alert(dados.mensagem);
 
         if (resposta.ok) {
-            console.log("Usuário logado:", dados.usuario);
+            window.location.href = "verificacao.html";
         }
     });
 }
@@ -71,7 +71,51 @@ if (btnCadastrar){
         alert(dados.mensagem);
 
         if (resposta.ok){
-            window.location.href = "index.html";
+            window.location.href = "verificacao.html";
         }
     });
 }
+
+const camposCodigo = document.querySelectorAll(".digito-codigo");
+
+camposCodigo.forEach((campo, indice) => {
+    
+    campo.addEventListener("input", () => {
+        campo.value = campo.value.replace(/\D/g, "");
+
+        if (campo.value && indice < camposCodigo.length - 1) {
+            camposCodigo[indice + 1].focus();
+        }
+    });
+
+    campo.addEventListener("keydown", (evento) => {
+        if (
+            evento.key === "Backspace" &&
+            !campo.value &&
+            indice > 0
+        ) {
+            camposCodigo[indice - 1].focus();
+        }
+    });
+
+    campo.addEventListener("paste", (evento) => {
+        evento.prevenDefault();
+
+        const texto = evento.clipboardData
+            .getData("text")
+            .replace(/\D/g, "")
+            .slice(0, 6);
+        
+        texto.split("").forEach((digito, i) => {
+            camposCodigo[i].value = digito;
+        });
+
+        const proximoCampo = Math.min(
+            texto.legth,
+            camposCodigo.length - 1
+        );
+
+        camposCodigo[proximoCampo].focus();
+    });
+
+});

@@ -139,3 +139,22 @@ header h1{
     transform: scale(1.05);
 
 }
+
+.campos-codigo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+    opacity: 0.5
+}
+
+.digito-codigo {
+    width: 42px;
+    height: 48px;
+    text-align: center;
+    font-size: 22px;
+    font-family: "Geist Mono", monospace;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubble</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="pngs/hubble.png"/>
+        <h2 class="fonte" >hubble</h2>
+    </header>
+
+    <div class="login verificacao">
+        <h1>Verifique seu e-mail</h1>
+
+        <p>
+            Enviamos um código de verificação
+            para o seu e-mail.
+        </p>
+
+        <div class="campos-codigo">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="Primeiro dígito">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" aria-label="Segundo dígito">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" aria-label="Terceiro dígito">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" aria-label="Quarto dígito">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" aria-label="Quinto dígito">
+            <input type="text" class="digito-codigo" maxlength="1" inputmode="numeric" aria-label="Sexto dígito">
+        </div>
+
+        <button id="btnVerificar">
+            Verificar código
+        </button>
+
+        <p class="cadastro-texto">
+            Não recebeu o código?
+            <a href="#" class="cadastro-link" id="btnReenviar">
+                Reenviar
+            </a>
+        </p>
+
+        <p class="cadastro-texto">
+            <a href="index.html" class="cadastro-link">
+                Voltar para o login
+            </a>
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
