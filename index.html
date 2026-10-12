@@ -7,29 +7,94 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
-        <img src="pngs/hubble.png"/>
-        <h2 class="fonte" >hubble</h2> 
+        <img src="pngs/hubble.png" alt="Logo do Hubble">
+        <h2 class="fonte">hubb<span class="gradiente-logo">le</span></h2>
     </header>
 
-    <div class="welcome">
-        <h1 class="fonte titulo-responsivo titulo-principal",>Seu espaço. Suas conexões.</h1>
+    <main>
+        <div class="welcome">
+            <h1 class="fonte titulo-responsivo titulo-principal">
+                Seu espaço. Suas conexões.
+            </h1>
 
-        <h3 class="titulo-responsivo subtitulo">
-            Conheça pessoas, compartilhe momentos e descubra novas conexões.
-        <h3>
+            <h3 class="titulo-responsivo subtitulo">
+                Conheça pessoas, compartilhe momentos e descubra novas conexões.
+            </h3>
 
-        <h4 class="titulo-responsivo titulo-menor">
-            Tudo começa com o Hubble.
-        </h4>
+            <h4 class="titulo-responsivo titulo-menor">
+                Tudo começa com o Hubble.
+            </h4>
 
-        <button id="btnComecar"
-                onclick="window.location.href='login.html'" >
-            Começar ↗</button>
+            <button id="btnComecar"
+                onclick="window.location.href='login.html'">
+                Começar ↗
+            </button>
+        </div>
 
-    </div>
+        <aside class="disclaimer" id="disclaimer">
+            <div class="disclaimer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24"
+                    fill="none" stroke="currentColor"
+                    stroke-width="1.7" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 11v5"/>
+                    <path d="M12 8h.01"/>
+                </svg>
+            </div>
+
+            <div class="disclaimer-content">
+                <h3>Um aviso rapidinho!</h3>
+
+                <p>
+                    O Hubble ainda está em fase de desenvolvimento e, 
+                    após um período sem atividade, nosso servidor
+                    pode entrar em repouso. Ao acessar novamente,
+                    pode levar alguns instantes para voltar a funcionar.
+                    Agradecemos a compreensão 💜.
+                </p>
+
+                <span class="disclaimer-nota">
+                    <svg viewBox="0 0 24 24" width="16" height="16"
+                        fill="none" stroke="currentColor"
+                        stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v513 2"/>
+                    </svg>
+                    O primeiro acesso pode demorar um pouquinho.
+                </span>
+            </div>
+
+            <button class="disclaimer-close"
+                id="fecharDisclaimer"
+                aria-label="Fechar aviso"
+                type="button">
+                &times;
+            </button>
+        </aside>
+    </main>
+    
+    <script>
+        const disclaimer = document.getElementById("disclaimer");
+        const fecharDisclaimer = document.getElementById("fecharDisclaimer");
+
+        fecharDisclaimer.addEventListener("click", () => {
+            disclaimer.classList.add("fechando");
+
+            setTimeout(() => {
+                disclaimer.remove();
+            }, 800);
+        });
+    </script>
+
+
+
 </body>
 </html>
