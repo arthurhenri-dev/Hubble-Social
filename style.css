@@ -61,7 +61,7 @@ header h1{
 }
 
 
-h1 {
+.responsivo {
     font-size: clamp(2rem, 5vw, 4.5rem);
     text-align: center;
     max-width: 90%;
