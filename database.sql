@@ -23,7 +23,7 @@ SELECT * FROM usuarios;
 DESCRIBE usuarios;
 SHOW TABLES;
 
-DELETE FROM usuarios;
+DELETE FROM usuarios WHERE id=27;
 ALTER TABLE usuarios AUTO_INCREMENT = 1;
 
 SELECT

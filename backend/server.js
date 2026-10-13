@@ -136,7 +136,7 @@ app.post("/cadastro", async(req, res) => {
             });
         } catch (erroEmail) {
             // se o envio falhar, remove o cadastro recem criado
-            await conexao.promisse().query(
+            await conexao.promise().query(
                 "DELETE FROM usuarios WHERE id = ? AND email_verificado = FALSE",
                 [resultado.insertId]
             );
