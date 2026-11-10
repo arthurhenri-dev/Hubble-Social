@@ -1,4 +1,3 @@
-
 // Script da tela de login (index.html)
 
 const btnLogin = document.getElementById("btnLogin");
